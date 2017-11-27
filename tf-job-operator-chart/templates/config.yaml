@@ -40,4 +40,11 @@ data:
           - name: nvidia-debug-tools # optional
             mountPath: /usr/local/bin/nvidia
             hostPath: /home/kubernetes/bin/nvidia/bin
+{{ else if eq $cloud "" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tf-job-operator-config
+data:
+  controller_config_file.yaml: |
 {{ end }}
